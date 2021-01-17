@@ -14,6 +14,10 @@ objects or entities should be open for extension but close for modification. thi
 
 every child class that extend from a class ( inheritance ) should treat as it's parent class such as return type of methods. 
 
+## Interface Segregation Principle
+
+A class should never be forced to implement an interface that it doesn't use, so we should give every class an interface that is usable for it.
+
 
 ## Dependency Inversion Principle
 

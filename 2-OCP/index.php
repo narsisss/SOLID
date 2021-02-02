@@ -54,13 +54,17 @@ class Payment {
      */
     public function pay()
     {
+        // do some transaction and then call pay method ....
         $this->method->pay();
     }
 
 }
 
 $method1 = new Wallet();
+
+$payment = new Payment($method1);
+
 $method2 = new OnlineGateway();
 
-$payment = new Payment([$method1, $method2]);
+$payment = new Payment($method1);
 $payment->pay();

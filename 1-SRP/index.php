@@ -2,6 +2,9 @@
 
 class Order {
 
+    /**
+     * @var
+     */
     protected $products;
 
     /**
@@ -9,17 +12,28 @@ class Order {
      */
     protected $invoice;
 
+    /**
+     * Order constructor.
+     * @param $products
+     * @param InvoiceInterface $invoice
+     */
     public function __construct($products, InvoiceInterface $invoice)
     {
         $this->products = $products;
         $this->invoice = $invoice;
     }
 
+    /**
+     *
+     */
     public function process()
     {
         //process Order
     }
 
+    /**
+     * @return mixed
+     */
     public function invoice()
     {
         // prepare invoice output for Order
@@ -30,11 +44,17 @@ class Order {
 
 class OrderModel {
 
+    /**
+     * @param Order $order
+     */
     public function save(Order $order)
     {
         // save $order
     }
 
+    /**
+     * @param Order $order
+     */
     public function update(Order $order)
     {
         // update $order
@@ -44,12 +64,18 @@ class OrderModel {
 
 interface InvoiceInterface {
 
+    /**
+     * @return mixed
+     */
     public function output();
 
 }
 
 class PDFInvoice implements InvoiceInterface {
 
+    /**
+     * @return mixed|void
+     */
     public function output()
     {
         // return pdf

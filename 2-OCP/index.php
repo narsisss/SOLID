@@ -1,52 +1,66 @@
 <?php
 
-interface ShapeInterface {
+interface PaymentInterface {
 
-    public function draw();
+    /**
+     * @return mixed
+     */
+    public function pay();
 
 }
 
-class Circle implements ShapeInterface {
+class Wallet implements PaymentInterface {
 
-    public function draw()
+    /**
+     * @return mixed|void
+     */
+    public function pay()
     {
-        echo "This Shape is Circle \n";
+        echo "pay from wallet \n";
     }
 
 }
 
-class Rectangle implements ShapeInterface {
+class OnlineGateway implements PaymentInterface {
 
-    public function draw()
+    /**
+     * @return mixed|void
+     */
+    public function pay()
     {
-        echo "This Shape is Rectangle \n";
+        echo "pay from online gateways \n";
     }
 
 }
 
-class DrawShape {
+class Payment {
 
-    private $shapes;
+    /**
+     * @var
+     */
+    private $method;
 
-    public function __construct($shapes)
+    /**
+     * Payment constructor.
+     * @param $method
+     */
+    public function __construct($method)
     {
-
-        $this->shapes = $shapes;
+        $this->method = $method;
     }
 
-    public function drawAllShapes()
+    /**
+     *
+     */
+    public function pay()
     {
-
-        foreach($this->shapes as $shape){
-            $shape->draw();
-        }
-
+        $this->method->pay();
     }
 
 }
 
-$shape1 = new Circle();
-$shape2 = new Rectangle();
+$method1 = new Wallet();
+$method2 = new OnlineGateway();
 
-$draw = new DrawShape([$shape1, $shape2]);
-$draw->drawAllShapes();
+$payment = new Payment([$method1, $method2]);
+$payment->pay();
